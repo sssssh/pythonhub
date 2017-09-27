@@ -1,0 +1,8 @@
+# fistly the site-wide file is read
+# On macOS the file is: /Library/Application Support/pip/pip.conf
+# On Unix: /etc/pip.conf
+# then the per-user file is read
+# On macOS: /Library/Application Support/pip/pip.conf
+# On Unix: /etc/pip.conf
+# finally, the virtualenv-specific file is read
+# On Unix/macOS: $VIRTUAL_EVN/pip.conf
