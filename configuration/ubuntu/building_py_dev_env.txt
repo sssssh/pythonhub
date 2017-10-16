@@ -1,0 +1,47 @@
+OS: Ubuntu-14.04
+Python2: 2.7.10
+Python3: 3.6.3
+Pip: 9.0.1
+Virtualenv: 15.1.0
+Virtualenvwrapper: 4.8.2
+Emacs: 24.3.1
+
+Before: deb包的更新、升级
+  $ sudo apt-get -y update
+  $ sudo apt-get -y upgrade
+  $ sudo apt-get -y install build-essential   # 通过build-essential安装了gcc
+  $ sudo apt-get -y install libsqlite3-dev
+  $ sudo apt-get -y install libreadline6-dev
+  $ sudo apt-get -y install libgdbm-dev
+  $ sudo apt-get -y install zlib1g-dev
+  $ sudo apt-get -y install libbz2-dev
+  $ sudo apt-get -y install sqlite3
+  $ sudo apt-get -y install tk-dev
+  $ sudo apt-get -y install zip
+  $ sudo apt-get -y install libssl-dev
+
+
+安装pip
+  $ wget https://bootstrap.pypa.io/get-pip.py
+  $ sudo python get-pip.py
+
+
+通过pip安装包
+  $ sudo pip install virtualenv
+  $ sudo pip install virtualenvwrapper
+
+
+通过源文件构建并安装python
+  $ wget https://www.python.org/ftp/python/2.7.10/Python-2.7.10.tgz
+  $ tar xvzf Python-2.7.10.tgz
+  $ cd Python-2.7.10
+  $ LDFLAGS="-L/usr/lib/x86_64-linux-gnu" ./configure --prefix=/opt/python2.7.10
+  $ make
+  $ sudo make install
+
+  $ wget https://www.python.org/ftp/python/2.7.9/Python-3.6.3.tgz
+  $ tar xvzf Python-3.6.3.tgz
+  $ cd Python-3.6.3
+  $ LDFLAGS="-L/usr/lib/x86_64-linux-gnu" ./configure --prefix=/opt/python3.6.3
+  $ make
+  $ sudo make install
