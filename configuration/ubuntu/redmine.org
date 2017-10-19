@@ -1,0 +1,40 @@
+* ENV
+**** Ubuntu 14.04 Server
+**** Ruby 2.3.3
+**** Gem 2.5.2
+
+* Uninstall Ruby 1.9.1
+**** sudo apt-get remove ruby
+**** (sudo rm -rf /usr/lib/ruby)
+
+* Install Ruby 2.3.3
+**** wget https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.3.tar.gz
+**** tar zxvf ruby-2.3.3.tar.gz
+**** LDFLAGS="-L/usr/lib/x86_64-linux-gnu" ./configure --prefix=/usr/lib/
+**** make
+**** sudo make install  (ps: sudo make uninstall and del related finder/file)
+**** ruby --version
+**** which ruby
+
+* Install dependencies
+      # install Apache
+**** sudo apt-get install -y apache2
+**** sudo apt-get install -y libapache2-mod-passenger
+# install MySQL
+**** sudo apt-get install -y mysql-server
+**** sudo apt-get Install -y mysql-client
+**** root -> type password
+
+* Install Redmine
+**** sudo apt-get install -y redmine redmine-mysql
+ # Configuring redmine
+ # /usr/share/doc/redmine/instances/default
+ # make sure Configuring database for redmine/instances/default with dbconfig-common?
+ # mysql to be used by redmine/instances/default
+ # mysql admin password
+ # set redmine-mysql password
+
+* Set Redmine Configuring
+       # modify Apache config file -> 000-default.conf     
+**** sudo emacs /etc/apache2/sites-available/000-default.conf
+ # DocumentRoot /var/www/html -> DocumentRoot /usr/share/redmine/public
