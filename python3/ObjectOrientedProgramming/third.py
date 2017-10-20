@@ -57,3 +57,10 @@ class Friend(Contact):
         self.name = name
         self.email = email
         self.phone = phone
+
+
+# friend -> overrides init super
+class Friend1(Contact):
+    def __init__(self, name, email, phone):
+        super().__init__(name, email)
+        self.phone = phone
