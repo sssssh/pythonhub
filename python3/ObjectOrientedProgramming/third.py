@@ -172,3 +172,30 @@ class Subclass(LeftSubclass, RightSubclass):
         super().call_me()
         print("Calling method on Subclass")
         self.num_sub_calls += 1
+
+
+# friend multi super
+class Contact2:
+    all_contacts = []
+
+    def __init__(self, name='', email='', **kwargs):
+        super().__init__(**kwargs)
+        self.name = name
+        self.email = email
+        self.all_contacts.append(self)
+
+
+class AddressHolder1:
+    def __init__(self, street='', city='', state='', code='', **kwargs):
+        super().__init__(**kwargs)
+        self.street = street
+        self.city = city
+        self.state = state
+        self.code = code
+
+
+class Friend3(Contact2, AddressHolder1):
+    def __init__(self, phone='', **kwargs):
+        print(kwargs)
+        super().__init__(**kwargs)
+        self.phone = phone
