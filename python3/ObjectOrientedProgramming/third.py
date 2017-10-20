@@ -49,3 +49,11 @@ class LongNameDict(dict):
             if not longest or len(key) > len(longest):
                 longest = key
         return longest
+
+
+# friend -> overrides init
+class Friend(Contact):
+    def __init__(self, name, email, phone):
+        self.name = name
+        self.email = email
+        self.phone = phone
