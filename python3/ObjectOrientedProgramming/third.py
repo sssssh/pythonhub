@@ -20,9 +20,22 @@ class Supplier(Contact):
               "{} order to {}".format(order, self.name))
 
 
+# contact list inheritance
+class ContactList(list):  # inheriting from list
+    def search(self, name):  # add new method search contact by name
+        """Return all contacts that contain the search value
+        in their name."""
+        matching_contacts = []
+        for contact in self:
+            if name in contact.name:
+                matching_contacts.append(contact)
+        return matching_contacts
 
 
+class Contact1:
+    all_contacts = ContactList()  # instance
 
-
-
-
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+        self.all_contacts.append(self)
