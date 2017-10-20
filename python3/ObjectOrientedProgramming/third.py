@@ -1,3 +1,6 @@
+import abc
+
+
 # inheriting from object
 class SubClass(object):
     pass
@@ -237,3 +240,22 @@ class OddContainer:
         if not isinstance(x, int) or not x % 2:
             return False
         return True
+
+
+# abc media
+class MediaLoader(metaclass=abc.ABCMeta):
+    @abc.abstractmethod
+    def play(self):
+        pass
+
+    @abc.abstractproperty
+    def ext(self):
+        pass
+
+    @classmethod
+    def __subclasshook__(cls, C):
+        if cls is MediaLoader:
+            attrs = set(dir(C))
+            if set(cls.__abstractmethods__) <= attrs:
+                return True
+        return NotImplemented
