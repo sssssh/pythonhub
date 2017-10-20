@@ -503,3 +503,13 @@ class HousePurchase(Purchase, House):
         init.update(Purchase.prompt_init())
         return init
     prompt_init = staticmethod(prompt_init)
+
+
+# rudimentary agent
+class Agent:
+    def __init__(self):
+        self.property_list = []
+
+    def display_properties():
+        for property in self.property_list:
+            property.display()
