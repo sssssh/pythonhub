@@ -78,3 +78,10 @@ def funny_division3(anumber):
 for val in (0, "hello", 50.0, 13):
     print("Testing %s:" % val, end=" ")
     print(funny_division3(val))
+
+
+# catch as keyword
+try:
+    raise ValueError("This is an argument")
+except ValueError as e:
+    print("The exception arguments were", e.args)
