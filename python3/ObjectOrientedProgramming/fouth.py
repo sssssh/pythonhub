@@ -131,3 +131,12 @@ class InvalidWithdrawal(Exception):
 
 
 raise InvalidWithdrawal(25, 50)
+
+
+# handle custom exception
+try:
+    raise InvalidWithdrawal(25, 50)
+except InvalidWithdrawal as e:
+    print("I'm sorry, but your withdrawal is "
+          "more than your balance by "
+          "${}".format(e.overage()))
