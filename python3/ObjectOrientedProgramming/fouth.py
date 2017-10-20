@@ -8,7 +8,7 @@ class EvenOnly(list):
         super().append(integer)
 
 
-# method calls excepting
+# exception quits
 def no_return():
     print("I am about to raise an exception")
     raise Exception("This is always raised")
@@ -16,8 +16,17 @@ def no_return():
     return "I won't be returned"
 
 
+# method calls excepting
 def call_exceptor():
     print("call_exceptor starts here...")
     no_return()
     print("an exception was raised...")
     print("...so these lines don't run")
+
+
+# try except
+try:
+    no_return
+except:
+    print("I caught an exception")
+print("executed after the exception")
