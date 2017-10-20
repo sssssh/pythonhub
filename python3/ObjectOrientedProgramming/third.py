@@ -86,3 +86,16 @@ class AddressHolder:
         self.state = state
         self.code = code
 
+
+# multi friend
+class Friend2(Contact, AddressHolder):
+    def __init__(self, name, email, phone,
+                 street, city, state, code):
+        Contact.__init__(self, name, email)
+        AddressHolder.__init__(
+            self, street, city, state, code)
+        self.phone = phone
+
+
+_a_friend = ['a', 'a@1', 123, 'Baker', 'UK', 'Unknown', 123456]
+_friend = Friend2(*_a_friend)
