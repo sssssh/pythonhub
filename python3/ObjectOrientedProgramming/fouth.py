@@ -108,3 +108,11 @@ else:
     print("This code called if there is no exception")
 finally:
     print("This cleanup code is always called")
+
+
+# defining an exception
+class InvalidWithdrawal(Exception):
+    pass
+
+
+raise InvalidWithdrawal("You don't have $50 in your account")
