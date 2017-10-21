@@ -70,3 +70,15 @@ class Color:
 
     def get_name(self):
         return self._name
+
+
+# python pretty as python
+class Color2:
+    def __init__(self, rgb_value, name):
+        self.rgb_value = rgb_value
+        self.name = name
+
+
+c = Color2("#ff0000", "bright red")
+print(c.name)
+c.name = "red"
