@@ -216,3 +216,14 @@ class WebPage:
             print("Retrieving New Page...")
             self._content = urlopen(self.url).read()
         return self._content
+
+
+# average property
+class AverageList(list):
+    @property
+    def average(self):
+        return sum(self) / len(self)
+
+
+_list = AverageList([1, 2, 3, 4, 5])
+print(_list.average)
