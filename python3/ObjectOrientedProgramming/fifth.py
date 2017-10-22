@@ -174,3 +174,11 @@ class Foo2:
 foo = Foo2()
 foo.foo = 2
 print(foo.foo)
+
+
+# read only setattr
+class ReadOnlyX:
+    def __setattr__(self, attr, value):
+        if attr == "x":
+            raise AttributeError("X is immutable")
+        super().__setattr__(attr, value)
