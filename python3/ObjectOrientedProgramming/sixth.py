@@ -1,4 +1,5 @@
 import datetime
+from collections import namedtuple
 
 
 # empty object
@@ -14,3 +15,8 @@ def middle(stock, date):
 
 mid_value, date = middle(("GOOG", 613.30, 625.86, 610.50),
                          datetime.date(2010, 1, 6))
+
+
+# named tuple
+Stock = namedtuple("Stock", "symbol current high low")
+stock = Stock("FB", 75.00, high=75.03, low=74.90)
