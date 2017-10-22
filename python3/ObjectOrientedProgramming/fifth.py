@@ -397,3 +397,9 @@ class Document2:
         f = open(self.filename, 'w')
         f.write(''.join(self.characters))
         f.close()
+
+
+# string property
+@property
+def string(self):
+    return "".join(self.characters)
