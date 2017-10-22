@@ -158,3 +158,19 @@ class Silly2:
     def silly(self):
         print("Whoah, you killed silly!")
         del self._silly
+
+
+# property decorator get set
+class Foo2:
+    @property
+    def foo(self):
+        return self._foo
+
+    @foo.setter
+    def foo(self, value):
+        self._foo = value
+
+
+foo = Foo2()
+foo.foo = 2
+print(foo.foo)
