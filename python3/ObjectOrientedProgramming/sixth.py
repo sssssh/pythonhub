@@ -50,3 +50,12 @@ except:
 
 for key, value in random_keys.items():
     print("{} has value {}".format(key, value))
+
+
+# setdefault frequency
+def letter_frequency(sentence):
+    frequencies = {}
+    for letter in sentence:
+        frequency = frequencies.setdefault(letter, 0)
+        frequency[letter] = frequency + 1
+    return frequency
