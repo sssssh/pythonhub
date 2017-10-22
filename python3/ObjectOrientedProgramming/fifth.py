@@ -374,6 +374,26 @@ class Cursor:
                 break
 
     def end(self):
-        while self.position < len(self.document.characters
-                ) and  self.document.characters[self.position] != '\n':
+        while self.position < len(self.document.characters) and self.document.characters[self.position] != '\n':
             self.position += 1
+
+
+# document use Cursor
+class Document2:
+    def __init__(self):
+        self.characters = []
+        self.cursor = Cursor(self)
+        self.filename = ''
+
+    def insert(self, character):
+        self.characters.insert(self.cursor.position,
+                               character)
+        self.cursor.forward()
+
+    def delete(self):
+        del self.characters[self.cursor.position]
+
+    def save(self):
+        f = open(self.filename, 'w')
+        f.write(''.join(self.characters))
+        f.close()
