@@ -190,3 +190,13 @@ class ReadOnlyY:
         if attr == "y":
             return "Just Try and Change Me!"
         return super().__getattribute__(attr)
+
+
+read_x = ReadOnlyX()
+read_x.x = 1
+print(read_x.x)
+read_x.a = 1
+
+read_y = ReadOnlyY()
+read_y.y = 2
+read_y.a = 2
