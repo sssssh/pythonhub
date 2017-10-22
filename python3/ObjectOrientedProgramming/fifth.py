@@ -1,4 +1,5 @@
 import math
+from urllib.request import urlopen
 
 
 # distances - no objects
@@ -193,10 +194,25 @@ class ReadOnlyY:
 
 
 read_x = ReadOnlyX()
-read_x.x = 1
-print(read_x.x)
+# read_x.x = 1
+# print(read_x.x)
 read_x.a = 1
 
 read_y = ReadOnlyY()
-read_y.y = 2
+# read_y.y = 2
 read_y.a = 2
+
+
+# cache getter
+
+class WebPage:
+    def __init__(self, url):
+        self.url = url
+        self._content = None
+
+    @property
+    def content(self):
+        if not self._content:
+            print("Retrieving New Page...")
+            self._content = urlopen(self.url).read()
+        return self._content
