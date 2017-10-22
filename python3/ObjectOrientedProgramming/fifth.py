@@ -182,3 +182,11 @@ class ReadOnlyX:
         if attr == "x":
             raise AttributeError("X is immutable")
         super().__setattr__(attr, value)
+
+
+# read only getattribute
+class ReadOnlyY:
+    def __getattribute__(self, attr):
+        if attr == "y":
+            return "Just Try and Change Me!"
+        return super().__getattribute__(attr)
