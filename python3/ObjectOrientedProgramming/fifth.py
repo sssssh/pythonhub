@@ -132,3 +132,10 @@ class Silly:
 
     silly = property(_get_silly, _set_silly, _del_silly,
                      "This is a silly property")
+
+
+# property decorator get
+class Foo:
+    @property
+    def foo(self):
+        return "bar"
