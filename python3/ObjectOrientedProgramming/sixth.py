@@ -1,5 +1,5 @@
 import datetime
-from collections import namedtuple
+from collections import namedtuple, defaultdict
 
 
 # empty object
@@ -59,3 +59,11 @@ def letter_frequency(sentence):
         frequency = frequencies.setdefault(letter, 0)
         frequency[letter] = frequency + 1
     return frequency
+
+
+# defaultdict frequency
+def letter_frequency2(sentence):
+    frequencies = defaultdict(int)
+    for letter in sentence:
+        frequencies[letter] += 1
+    return frequencies
