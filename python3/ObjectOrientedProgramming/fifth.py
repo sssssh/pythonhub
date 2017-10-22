@@ -5,6 +5,7 @@ import shutil
 import zipfile
 from pathlib import Path
 from urllib.request import urlopen
+from PIL import Image
 
 
 # distances - no objects
@@ -314,3 +315,14 @@ class ZipReplace2(ZipProcessor):
                     self.search_string, self.replace_string)
             with filename.open("w") as file:
                 file.write(contents)
+
+
+# scale image inheritance
+class ScaleZip(ZipProcessor):
+
+    def process_files(self):
+        '''Scale each image in the directory to 640x480'''
+        for filename in self.temp_directory.iterdir():
+            im = Image.open(str(filename))
+            scaled = im.resize((640, 480))
+            scaled.save(str(filename))
