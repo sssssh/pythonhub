@@ -6,6 +6,8 @@ from collections import KeysView, ItemsView, ValuesView
 from functools import total_ordering
 from urllib.request import urlopen
 from urllib.parse import urlparse
+from queue import Queue
+
 
 # empty object
 class MyObject:
@@ -274,7 +276,7 @@ def normalize_url(self, path, link):
 
 
 # visited links sets
-class LinkCollector:
+class LinkCollector2:
     def __init__(self, url):
         # urlparse('http://www.baidu.com/index.php?username=guol')
         # ParseResult(scheme='http', netloc='www.baidu.com', path='/index.php', params='', query='username=guol', fragment='')
@@ -306,8 +308,37 @@ class LinkCollector:
             return self.url + path.rpartition('/')[0] + '/' + link
 
 
-# collect remaining links
-for link in unvisited_links:
-    if not link.startswith(self.url):
-        continue
-    self.cllect_links(urlparse(link).path)
+# queue link collector
+class LinkCollector3:
+    def __init__(self, url):
+        self.url = "http://%s" % urlparse(url).netloc
+        self.collected_links = {}
+        self.visited_links = set()
+
+    def collect_links(self):
+        queue = Queue()
+        queue.put(self.url)
+        while not queue.empty():
+            url = queue.get().rstrip('/')
+            self.visited_links.add(url)
+            page = str(urlopen(url).read())
+            links = LINK_REGEX.findall(page)
+            links = {
+                self.normalize_url(urlparse(url).path, link)
+                for link in links
+            }
+            self.collected_links[url] = links
+            for link in links:
+                self.collected_links.setdefault(link, set())
+            unvisited_links = links.difference(self.visited_links)
+            for link in unvisited_links:
+                if link.startswith(self.url):
+                    queue.put(link)
+
+    def normalize_url(self, path, link):
+        if link.startswith("http://"):
+            return link.rstrip('/')
+        elif link.startswith("/"):
+            return self.url + link.rstrip('/')
+        else:
+            return self.url + path.rpartition('/')[0] + '/' + link.rstrip('/')
