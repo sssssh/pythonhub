@@ -163,3 +163,8 @@ def augmented_move(target_folder, *filenames,
         else:
             print_verbose("Moving {0}", filename)
             shutil.move(filename, target_path)
+
+
+# unpacking arguments
+def show_args(arg1, arg2, arg3="THREE"):
+    print(arg1, arg2, arg3)
