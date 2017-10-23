@@ -1,6 +1,6 @@
 import string
 import datetime
-from collections import namedtuple, defaultdict
+from collections import namedtuple, defaultdict, Counter
 from functools import total_ordering
 
 
@@ -79,6 +79,30 @@ def tuple_counter():
     global num_items
     num_items += 1
     return (num_items, [])
+
+
+# counter frequency
+def letter_frequency4(sentence):
+    return Counter(sentence)
+
+
+# counter poll
+responses = [
+    "vanilla",
+    "chocolate",
+    "vanilla",
+    "vanilla",
+    "caramel",
+    "strawberry",
+    "vanilla"
+]
+
+
+print(
+    "The children voted for {} ice cream".format(
+        Counter(responses).most_common(1)[0][0]
+    )
+)
 
 
 d = defaultdict(tuple_counter)
