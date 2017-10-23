@@ -1,9 +1,11 @@
+import re
 import string
 import datetime
 from collections import namedtuple, defaultdict, Counter
 from collections import KeysView, ItemsView, ValuesView
 from functools import total_ordering
-
+from urllib.request import urlopen
+from urllib.parse import urlparse
 
 # empty object
 class MyObject:
@@ -242,3 +244,19 @@ class DictSorted(dict):
     def __iter__(self):
         '''for x in self syntax'''
         return self.ordered_keys.__init__()
+
+
+# link parser
+LINK_REGEX = re.compile(
+    "<a [^>]*href=['\"]([^'\"]+)['\"][^>]*>")
+
+
+class LinkCollector:
+    def __init__(self, url):
+        self.url = "http://" + urlparse(url).netloc
+
+    def collect_links(self, path="/"):
+        full_url = self.url + path
+        page = str(urlopen(full_url).read())
+        links = LINK_REGEX.findall(page)
+        return links
