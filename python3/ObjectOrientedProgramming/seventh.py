@@ -42,3 +42,31 @@ def min_max_indexes(seq):
     minimum = min(enumerate(seq), key=itemgetter(1))
     maximum = max(enumerate(seq), key=itemgetter(1))
     return minimum[0], maximum[0]
+
+
+# file
+class HandlerFile:
+    def __init__(self, filename):
+        self.filename = filename
+
+    def readfile(self):
+        files = open(self.filename).read()
+        files.close()
+        return files
+
+    def writefile(self, contents):
+        files = open(self.filename, 'w')
+        files.write(contents)
+        files.close
+
+    def withfiles(self):
+        with open(self.filename) as files:
+            for line in files:
+                print(line, end='')
+
+    def getdata(self):
+        with open(self.filename) as file:
+            header = file.readline().strip().split('\t')
+            contacts = [
+                dict(zip(header, line.strip().split('\t'))) for line in file]
+        return contacts
