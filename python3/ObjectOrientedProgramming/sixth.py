@@ -1,3 +1,4 @@
+import string
 import datetime
 from collections import namedtuple, defaultdict
 
@@ -80,3 +81,12 @@ def tuple_counter():
 
 
 d = defaultdict(tuple_counter)
+
+
+# list tuple frequency
+CHARACTERS  = list(string.ascii_letters) + [" "]
+
+
+def letter_frequency3(sentence):
+    frequencies = [(c, 0) for c in CHARACTERS]
+    
