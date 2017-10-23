@@ -1,3 +1,5 @@
+import string
+import random
 from operator import itemgetter
 
 
@@ -70,3 +72,32 @@ class HandlerFile:
             contacts = [
                 dict(zip(header, line.strip().split('\t'))) for line in file]
         return contacts
+
+
+# context manager
+class StringJoiner(list):
+    def __enter__(self):
+        return self
+
+    def __exit__(self, types, value, tb):
+        self.result = "".join(self)
+
+
+with StringJoiner() as joiner:
+    for i in range(15):
+        joiner.append(random.choice(string.ascii_letters))
+
+print(joiner.result)
+
+
+'''
+# bad kw default
+number = 5
+def funky_function(number=number):
+    print(number)
+
+number=6
+funky_function(8)
+funky_function()
+print(number)
+'''
