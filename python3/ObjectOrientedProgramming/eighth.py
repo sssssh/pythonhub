@@ -1,4 +1,5 @@
 import datetime
+import pickle
 import re
 from io import StringIO, BytesIO
 
@@ -202,3 +203,18 @@ while char:
     char = source_file.read(1)
 
 print(dest_file.getvalue())
+
+
+# basic pickling
+some_data = ["a list", "containing", 5,
+        "values including another list",
+        ["inner", "list"]]
+
+with open("pickled_list", 'wb') as file:
+    pickle.dump(some_data, file)
+
+with open("pickled_list", 'rb') as file:
+    loaded_data = pickle.load(file)
+
+print(loaded_data)
+assert loaded_data == some_data
