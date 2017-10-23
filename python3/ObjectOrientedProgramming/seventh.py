@@ -1,3 +1,4 @@
+import smtplib
 import time
 import datetime
 import shutil
@@ -6,6 +7,7 @@ import string
 import random
 from operator import itemgetter
 from collections import Iterable
+from email.mime.text import MIMEText
 
 
 # reversible objects
@@ -233,7 +235,7 @@ class Timer:
 
 # timer test
 def format_time(message, *args):
-    now = datetime.datetime.strftime("%I:%M:%S")
+    now = datetime.datetime.now().strftime("%I:%M:%S")
     print(message.format(*args, now=now))
 
 
@@ -303,3 +305,20 @@ timer = Timer()
 timer.call_after(5, Repeater())
 format_time("{now}: Starting")
 timer.run()
+
+
+# send email
+def send_email(subject, message, from_addr, *to_addrs,
+               host="localhost", port=1025, **headers):
+    email = MIMEText(message)
+    email['Subject'] = subject
+    email['From'] = from_addr
+    for header, value in headers.items():
+        email[header] = value
+
+    sender = smtplib.SMTP(host, port)
+    for addr in to_addrs:
+        del email['To']
+        email['To'] = addr
+        sender.sendmail(from_addr, addr, email.as_string())
+    sender.quit()
