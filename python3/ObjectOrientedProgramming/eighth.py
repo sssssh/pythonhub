@@ -33,3 +33,18 @@ public class {0} {{
 }}"""
 
 print(template4.format("MyClass", "print('hello world')"))
+
+
+# format kw args
+template5 = """
+From: <{from_email}>
+To: <{to_email}>
+Subject: {subject}
+{message}"""
+
+print(template5.format(
+    from_email="a@example.com",
+    to_email="b@example.com",
+    subject="You have mail!",
+    message="Here's some mail for you. Hope you enjoy the message!"
+))
