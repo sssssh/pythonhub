@@ -7,6 +7,7 @@ import string
 import random
 from operator import itemgetter
 from collections import Iterable
+from functools import defaultdict
 from email.mime.text import MIMEText
 
 
@@ -322,3 +323,13 @@ def send_email(subject, message, from_addr, *to_addrs,
         email['To'] = addr
         sender.sendmail(from_addr, addr, email.as_string())
     sender.quit()
+
+
+# mailing list defaultdict set
+class MailingList:
+    '''Manage groups of e-mail addresses for sending e-mails.'''
+    def __init__(self):
+        self.email_map = defaultdict(set)
+
+    def add_to_group(self, email, group):
+        self.email_map[email].add(group)
