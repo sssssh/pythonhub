@@ -174,7 +174,17 @@ print(b)
 search_string = "hello world"
 pattern = "hello world"
 
-match = re.match(pattern, search_string)
+match_ = re.match(pattern, search_string)
 
-if match:
+if match_:
     print("regex matches")
+
+
+# match group
+pattern2 = "^[a-zA-Z.]+@([a-z.]*\.[a-z]+)$"
+search_string2 = "some.user@example.com"
+match_2 = re.match(pattern, search_string)
+
+if match_2:
+    domain = match_2.groups()[0]
+    print(domain)
