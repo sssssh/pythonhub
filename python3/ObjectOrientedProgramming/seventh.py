@@ -1,6 +1,7 @@
 import string
 import random
 from operator import itemgetter
+from collections import Iterable
 
 
 # reversible objects
@@ -101,3 +102,13 @@ funky_function(8)
 funky_function()
 print(number)
 '''
+
+
+# link downloader
+def get_pages(links):
+    if not isinstance(links, Iterable) or isinstance(
+            links, (bytes, str)):
+        links = [links]
+    for link in links:
+        # download the link with urllib
+        print(link)
