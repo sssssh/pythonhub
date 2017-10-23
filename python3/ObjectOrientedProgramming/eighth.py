@@ -113,3 +113,9 @@ total = subtotal + tax
 
 print("Sub: ${0} Tax: ${1} Total: ${total}".format(
     subtotal, tax, total=total))
+
+
+# currency format
+print("Sub: ${0:0.2f} Tax: ${1:0.2f} "
+      "Total: ${total:0.2f}".format(
+          subtotal, tax, total=total))
