@@ -67,3 +67,17 @@ To: <{0[1]}>
 Subject: {message[subject]}
 {message[message]}"""
 print(template6.format(emails, message=message))
+
+
+# tuple in dict format
+message2 = {
+        'emails': emails,
+        'subject': "You Have Mail!",
+        'message': "Here's some mail for you!"
+        }
+template7 = """
+From: <{0[emails][0]}>
+To: <{0[emails][1]}>
+Subject: {0[subject]}
+{0[message]}"""
+print(template7.format(message2))
