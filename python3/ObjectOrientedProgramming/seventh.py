@@ -20,3 +20,10 @@ for seq in normal_list, CustomSequence(), FunkyBackwards():
     print("\n{}: ".format(seq.__class__.__name__), end="")
     for item in reversed(seq):
         print(item, end=", ")
+
+
+# enumerate line numbers
+def enumerate_line(filename):
+    with open(filename) as files:
+        for index, line in enumerate(files):
+            print("{0}: {1}".format(index+1, line), end='')
