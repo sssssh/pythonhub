@@ -304,3 +304,10 @@ class LinkCollector:
             return self.url + link
         else:
             return self.url + path.rpartition('/')[0] + '/' + link
+
+
+# collect remaining links
+for link in unvisited_links:
+    if not link.startswith(self.url):
+        continue
+    self.cllect_links(urlparse(link).path)
