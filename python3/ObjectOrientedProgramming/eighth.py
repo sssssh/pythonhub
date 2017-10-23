@@ -140,3 +140,9 @@ for product, price, quantity in orders:
 # format datetime
 print("{0:%Y-%m-%d %I:%M%p }".format(
     datetime.datetime.now()))
+
+
+# encode bytes
+characters = b'\x63\x6c\x69\x63\x68\xe9'
+print(characters)
+print(characters.decode("latin-1"))
