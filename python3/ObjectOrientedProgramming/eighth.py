@@ -48,3 +48,7 @@ print(template5.format(
     subject="You have mail!",
     message="Here's some mail for you. Hope you enjoy the message!"
 ))
+
+
+# unlabelled kw
+print("{} {label} {}".format("x", "y", label="z"))
