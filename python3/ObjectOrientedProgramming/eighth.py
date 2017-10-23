@@ -2,6 +2,8 @@ import datetime
 import pickle
 import re
 from io import StringIO, BytesIO
+from threading import Timer
+from urllib.request import urlopen
 
 
 # string_creation
@@ -218,3 +220,33 @@ with open("pickled_list", 'rb') as file:
 
 print(loaded_data)
 assert loaded_data == some_data
+
+
+# state pickling
+
+class UpdatedURL:
+    def __init__(self, url):
+        self.url = url
+        self.contents = ''
+        self.last_updated = None
+        self.update()
+
+    def update(self):
+        self.contents = urlopen(self.url).read()
+        self.last_updated = datetime.datetime.now()
+        self.schedule()
+
+    def schedule(self):
+        self.timer = Timer(3600, self.update)
+        self.timer.setDaemon(True)
+        self.timer.start()
+
+    def __getstate__(self):
+        new_state = self.__dict__.copy()
+        if 'timer' in new_state:
+            del new_state['timer']
+        return new_state
+
+    def __setstate__(self, data):
+        self.__dict__ = data
+        self.schedule()
