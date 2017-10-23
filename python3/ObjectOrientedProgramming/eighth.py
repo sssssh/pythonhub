@@ -5,6 +5,7 @@ import re
 from io import StringIO, BytesIO
 from threading import Timer
 from urllib.request import urlopen
+from pathlib import Path
 
 
 # string_creation
@@ -279,3 +280,22 @@ def decode_contact(dic):
         return Contact(dic['first'], dic['last'])
     else:
         return dic
+
+
+# template boilerplate
+DIRECTIVE_RE = re.compile(
+    r'/\*\*\s*(include|variable|loopover|endloop|loopvar)'
+    r'\s*([^ *]*)\s*\*\*/')
+
+
+class TemplateEngine:
+    def __init__(self, infilename, outfilename, contextfilename):
+        self.template = open(infilename).read()
+        self.working_dir = Path(infilename).absolute().parent
+        self.pos = 0
+        self.outfile = open(outfilename, 'w')
+        with open(contextfilename) as contextfile:
+            self.context = json.load(contextfile)
+
+    def process(self):
+        print("PROCESSING...")
