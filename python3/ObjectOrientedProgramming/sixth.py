@@ -81,12 +81,13 @@ def tuple_counter():
 
 
 d = defaultdict(tuple_counter)
-
-
 # list tuple frequency
-CHARACTERS  = list(string.ascii_letters) + [" "]
+CHARACTERS = list(string.ascii_letters) + [" "]
 
 
 def letter_frequency3(sentence):
     frequencies = [(c, 0) for c in CHARACTERS]
-    
+    for letter in sentence:
+        index = CHARACTERS.index(letter)
+        frequencies[index] = (letter, frequencies[index][1] + 1)
+    return frequencies
