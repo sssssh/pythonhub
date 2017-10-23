@@ -27,3 +27,8 @@ def enumerate_line(filename):
     with open(filename) as files:
         for index, line in enumerate(files):
             print("{0}: {1}".format(index+1, line), end='')
+
+
+# zip to enumerate
+def zip_enumerate(container):
+    return zip(range(len(container)), container)
