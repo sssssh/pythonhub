@@ -7,3 +7,8 @@ d = """More
 multiple"""
 e = ("Three " "Strings "
      "Together")
+
+
+# format empty
+template = "Hello {}, you are currently {}."
+print(template.format('Dusty', 'writing'))
