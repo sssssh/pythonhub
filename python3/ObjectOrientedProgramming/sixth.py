@@ -1,6 +1,7 @@
 import string
 import datetime
 from collections import namedtuple, defaultdict
+from functools import total_ordering
 
 
 # empty object
@@ -91,3 +92,27 @@ def letter_frequency3(sentence):
         index = CHARACTERS.index(letter)
         frequencies[index] = (letter, frequencies[index][1] + 1)
     return frequencies
+
+
+# object comparison
+@total_ordering
+class WeirdSortee:
+    def __init__(self, string, number, sort_num):
+        self.string = string
+        self.number = number
+        self.sort_num = sort_num
+
+    def __lt__(self, object):
+        if self.sort_num:
+            return self.number < object.number
+        return self.string < object.string
+
+    def __repr__(self):
+        return "{}:{}".format(self.string, self.number)
+
+    def __eq__(self, object):
+        return all((
+            self.string == object.string,
+            self.number == object.number,
+            self.sort_num == object.number
+        ))
