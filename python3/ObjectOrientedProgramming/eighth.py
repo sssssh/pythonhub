@@ -1,5 +1,6 @@
 import datetime
 import re
+from io import StringIO, BytesIO
 
 
 # string_creation
@@ -188,3 +189,16 @@ match_2 = re.match(pattern, search_string)
 if match_2:
     domain = match_2.groups()[0]
     print(domain)
+
+
+# string io
+source_file = StringIO("an oft-replaced cliché")
+dest_file = BytesIO()
+
+
+char = source_file.read(1)
+while char:
+    dest_file.write(char.encode("ascii", "replace"))
+    char = source_file.read(1)
+
+print(dest_file.getvalue())
