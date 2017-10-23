@@ -309,7 +309,7 @@ timer.run()
 
 # send email
 def send_email(subject, message, from_addr, *to_addrs,
-               host="localhost", port=1025, **headers):
+               host="localhost", port=1025, headers=None):
     email = MIMEText(message)
     email['Subject'] = subject
     email['From'] = from_addr
