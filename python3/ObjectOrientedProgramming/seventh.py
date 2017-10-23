@@ -351,3 +351,23 @@ def send_mailing(self, subject, message, from_addr,
         emails = self.emails_in_groups(*groups)
         send_email(subject, message, from_addr,
                    *emails, headers=headers)
+
+
+# load save
+def save(self):
+    with open(self.data_file, 'w') as files:
+        for email, groups in self.email_map.items():
+            files.write(
+                '{} {}\n'.format(email, ','.join(groups))
+            )
+
+def load(self):
+    self.email_map = defaultdict(set)
+    try:
+        with open(self.data_file) as files:
+            for line in files:
+                email, groups = line.strip().split(' ')
+                groups = set(groups.split(','))
+                self.email_map[email] = groups
+    except IOError:
+        pass
