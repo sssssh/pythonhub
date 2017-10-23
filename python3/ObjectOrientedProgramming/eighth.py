@@ -12,3 +12,8 @@ e = ("Three " "Strings "
 # format empty
 template = "Hello {}, you are currently {}."
 print(template.format('Dusty', 'writing'))
+
+
+# format position
+template2 = "Hello {0}, you are {1}. Your name is {0}."
+print(template2.format('Dusty', 'writing'))
