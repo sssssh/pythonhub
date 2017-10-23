@@ -299,3 +299,23 @@ class TemplateEngine:
 
     def process(self):
         print("PROCESSING...")
+
+
+# template process
+class TemplateEngine2:
+    def __init__(self, infilename, outfilename, contextfilename):
+        self.template = open(infilename).read()
+        self.working_dir = Path(infilename).absolute().parent
+        self.pos = 0
+        self.outfile = open(outfilename, 'w')
+        with open(contextfilename) as contextfile:
+            self.context = json.load(contextfile)
+
+    def process(self):
+        match = DIRECTIVE_RE.search(self.template, pos=self.pos)
+        while match:
+            self.outfile.write(self.template[self.pos:match.start()])
+            directive, argument = match.groups()
+            self.pos = match.end()
+            match = DIRECTIVE_RE.search(self.template, pos=self.pos)
+        self.outfile.write(self.template[self.pos:])
