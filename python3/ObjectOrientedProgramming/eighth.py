@@ -1,3 +1,6 @@
+import datetime
+
+
 # string_creation
 a = "hello"
 b = 'world'
@@ -132,3 +135,8 @@ for product, price, quantity in orders:
     subtotal = price * quantity
     print("{0:10s}{1: ^9d}    ${2: <8.2f}${3: >7.2f}".format(
         product, quantity, price, subtotal))
+
+
+# format datetime
+print("{0:%Y-%m-%d %I:%M%p }".format(
+    datetime.datetime.now()))
