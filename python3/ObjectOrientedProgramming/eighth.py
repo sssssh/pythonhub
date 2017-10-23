@@ -1,4 +1,5 @@
 import datetime
+import re
 
 
 # string_creation
@@ -167,3 +168,13 @@ b = bytearray(b'abcdef')
 b[3] = ord(b'g')
 b[4] = 68
 print(b)
+
+
+# basic regex
+search_string = "hello world"
+pattern = "hello world"
+
+match = re.match(pattern, search_string)
+
+if match:
+    print("regex matches")
