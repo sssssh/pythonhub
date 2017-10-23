@@ -333,3 +333,13 @@ class MailingList:
 
     def add_to_group(self, email, group):
         self.email_map[email].add(group)
+
+
+# mailling list get emails
+def emails_in_groups(self, *groups):
+    groups = set(groups)
+    emails = set()
+    for e, g in self.email_map.items():
+        if g & groups:
+            emails.add(e)
+    return emails
