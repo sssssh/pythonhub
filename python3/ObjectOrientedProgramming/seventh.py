@@ -112,3 +112,10 @@ def get_pages(links):
     for link in links:
         # download the link with urllib
         print(link)
+
+
+# link downloader var arg
+def get_pages2(*links):
+    for link in links:
+        # download the link with urllib
+        print(link)
