@@ -203,3 +203,9 @@ while it.has_next():
     x = it.next()
     #do something with x
 """
+
+
+# stupid adding integer
+class SillyInt(int):
+    def __add__(self, num):
+        return 0
