@@ -60,3 +60,15 @@ fantasy_authors = {
 # dict comprehension
 fantasy_titles = {
     b.title: b for b in books if b.genre == 'fantasy'}
+
+
+# log processor
+existfilename = ''
+newfilename = ''
+
+
+with open(existfilename) as infile:
+    with open(newfilename, "w") as outfile:
+        warnings = (l for l in infile if "WARNING" in l)
+        for l in warnings:
+            outfile.write(l)
