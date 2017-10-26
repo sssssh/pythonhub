@@ -78,6 +78,14 @@ with open(existfilename) as infile:
 with open(existfilename) as infile:
     with open(newfilename, "w") as outfile:
         warnings = (l.replace('\tWARNING', '')
-                for l in infile if 'WARNING' in l)
+                    for l in infile if 'WARNING' in l)
         for l in warnings:
             outfile.write(l)
+
+
+# delete warning
+with open(existfilename) as infile:
+    with open(newfilename, "w") as outfile:
+        for l in infile:
+            if 'WARNING' in l:
+                outfile.write(l.replace('\tWARNING', ''))
