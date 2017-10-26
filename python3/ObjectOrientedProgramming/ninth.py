@@ -55,3 +55,8 @@ books = [
 ]
 fantasy_authors = {
         b.author for b in books if b.genre == 'fantasy'}
+
+
+# dict comprehension
+fantasy_titles = {
+    b.title: b for b in books if b.genre == 'fantasy'}
