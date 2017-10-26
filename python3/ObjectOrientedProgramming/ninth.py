@@ -184,3 +184,11 @@ def walk(_file):
 
 for filename in walk(root):
     print(filename)
+
+
+# basic count coroutine
+def tally():
+    score = 0
+    while True:
+        increment = yield score
+        score += 1
