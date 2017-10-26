@@ -127,3 +127,19 @@ with open(existfilename) as infile:
         filter = warnings_filter(infile)
         for l in filter:
             outfile.write(l)
+
+
+# delete warning
+def warning_filter(infilename):
+    with open(infilename) as infiles:
+        yield from (
+             l.replace('\tWARNING', '')
+             for l in infile
+             if 'WARNING' in l
+        )
+
+
+filter = warning_filter(existfilename)
+with open(existfilename, 'w') as outfile:
+    for l in filter:
+        outfile.write(l)
