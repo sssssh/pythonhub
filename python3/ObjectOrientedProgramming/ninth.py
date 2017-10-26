@@ -113,3 +113,17 @@ with open(existfilename) as infile:
         filter = WarningFilter(infile)
         for l in filter:
             outfile.write(l)
+
+
+# delete warnings
+def warnings_filter(insequence):
+    for l in insequence:
+        if "WARNING" in l:
+            yield l.replace("\tWARNING", '')
+
+
+with open(existfilename) as infile:
+    with open(newfilename, "w") as outfile:
+        filter = warnings_filter(infile)
+        for l in filter:
+            outfile.write(l)
