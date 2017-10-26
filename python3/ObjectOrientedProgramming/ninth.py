@@ -33,3 +33,7 @@ for num in input_strings:
 
 # listcomp converter
 listcomp_integers = [int(num) for num in input_strings]
+
+
+# listcomp exclude
+exclude_integers = [int(num) for num in input_strings if len(num) < 3]
