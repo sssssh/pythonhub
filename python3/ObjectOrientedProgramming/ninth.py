@@ -1,3 +1,6 @@
+from collections import namedtuple
+
+
 # iterator
 class CapitalIterable:
     def __init__(self, _string):
@@ -37,3 +40,18 @@ listcomp_integers = [int(num) for num in input_strings]
 
 # listcomp exclude
 exclude_integers = [int(num) for num in input_strings if len(num) < 3]
+
+
+# set comprehension
+Book = namedtuple("Book", "author title genre")
+books = [
+    Book("Pratchett", "Nightwatch", "fantasy"),
+    Book("Pratchett", "Thief Of Time", "fantasy"),
+    Book("Le Guin", "The Dispossessed", "scifi"),
+    Book("Le Guin", "A Wizard Of Earthsea", "fantasy"),
+    Book("Turner", "The Thief", "fantasy"),
+    Book("Phillips", "Preston Diamond", "western"),
+    Book("Phillips", "Twice Upon A Time", "scifi"),
+]
+fantasy_authors = {
+        b.author for b in books if b.genre == 'fantasy'}
