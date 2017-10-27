@@ -13,7 +13,10 @@ server.bind(('localhost', 2401))
 server.listen(1)
 try:
     while True:
-        cilent, addr = server.accept()
+        client, addr = server.accept()
         respond(client)
 finally:
     server.close()
+
+
+# sim
