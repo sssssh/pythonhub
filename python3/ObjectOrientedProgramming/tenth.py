@@ -108,3 +108,36 @@ def test3(a, b):
 @log_calls
 def test4(a, b, c):
     print("\ttest4 called")
+
+
+# observer core
+class Inventory:
+    def __init__(self):
+        self.observers = []
+        self._product = None
+        self._quantity = 0
+
+    def attach(self, observer):
+        self.observer.append(observer)
+
+    @property
+    def product(self):
+        return self._product
+
+    @product.setter
+    def product(self, value):
+        self._product = value
+        self._updata_observers()
+
+    @property
+    def quantity(self):
+        return self._quantity
+
+    @quantity.setter
+    def quantity(self, value):
+        self._quantity = value
+        self._updata_observers()
+
+    def _updata_observers(self):
+        for observer in self.observers:
+            observer()
