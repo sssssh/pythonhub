@@ -151,3 +151,14 @@ class ConsoleObserver:
     def __call__(self):
         print(self.inventory.product)
         print(self.inventory.quantity)
+
+
+# singleton using new, i don't get?
+class OneOnly:
+    _singleton = None
+
+    def __new__(cls, *args, **kwargs):
+        if not cls._singleton:
+            cls._singleton = super(OneOnly, cls).__new__(
+                cls, *args, **kwargs)
+        return cls._singleton
