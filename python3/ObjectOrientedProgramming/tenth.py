@@ -102,3 +102,9 @@ def test2(a, b):
 def test3(a, b):
     print("\ttest3 called")
     time.sleep(1)
+
+
+# decorator syntax
+@log_calls
+def test4(a, b, c):
+    print("\ttest4 called")
