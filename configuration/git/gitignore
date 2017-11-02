@@ -45,3 +45,6 @@ build/
 dist/
 *.avro
 *.egg-info/
+
+# csv
+*.csv
