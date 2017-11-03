@@ -1,4 +1,5 @@
 import sys
+from io import StringIO
 from contextlib import contextmanager, closing, suppress
 from connectlib import redirect_stdout, ExitStack
 from urllib.request import urlopen
@@ -56,6 +57,21 @@ with open(path, 'w') as fobj:
 with ExitStack as stack:
     file_objects = [stack.enter_context(open(filename))
                     for filename in filenames]
+
+
+# reentrant context manager
+@contextmanager
+def single():
+    print('Yielding')
+    yield
+    print('Exiting context manager')
+
+
+context = single()
+with context:
+    pass
+with context:
+    pass
 
 
 if __name__ == '__main__':
