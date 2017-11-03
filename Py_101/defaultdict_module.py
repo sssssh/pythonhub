@@ -13,3 +13,10 @@ for word in words:
         reg_dict[word] = 1
 
 print(reg_dict)
+
+
+default_dict = defaultdict(int)
+for word in words:
+    default_dict[word] += 1
+
+print(default_dict)
