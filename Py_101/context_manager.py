@@ -1,4 +1,4 @@
-from contextlib import contextmanager, closing
+from contextlib import contextmanager, closing, suppress
 from urllib.request import urlopen
 
 
@@ -24,6 +24,18 @@ def closing(db):
     finally:
         db.close()
 '''
+
+
+# contextlib.suppress(*exceptions)
+'''
+with open('fauxfile.txt') as fobj:
+    for line in fobj:
+        print(line)
+'''
+with suppress(FileNotFoundError):
+    with open('fauxfile.txt') as fobj:
+        for line in fobj:
+            print(line)
 
 
 if __name__ == '__main__':
