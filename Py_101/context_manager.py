@@ -74,6 +74,15 @@ with context:
     pass
 
 
+#
+stream = StringIO()
+write_to_stream = redirect_stdout(stream)
+with write_to_stream:
+    print('Write something to the stream')
+    with write_to_stream:
+        print('write something else to stream')
+
+
 if __name__ == '__main__':
     with file_open("/Users/noodle/Desktop/test.txt") as f_obj:
         f_obj.write("Testing context managers")
