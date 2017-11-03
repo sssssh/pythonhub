@@ -2,10 +2,14 @@
 import argparse
 
 
-parser = argparse.ArgumentParser(
-    description="A simple argument parser",
-    epilog="This is where you might put example usage"
+def get_args():
+    """Nothing"""
+    parser = argparse.ArgumentParser(
+        description="A simple argument parser",
+        epilog="This is where you might put example usage"
     )
+    return parser.parse_args()
 
 
-parser.print_help()
+if __name__ == '__main__':
+    get_args()
