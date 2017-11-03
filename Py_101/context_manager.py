@@ -1,6 +1,6 @@
 import sys
 from contextlib import contextmanager, closing, suppress
-from connectlib import redirect_stdout
+from connectlib import redirect_stdout, ExitStack
 from urllib.request import urlopen
 
 
@@ -50,6 +50,12 @@ with open(path, 'w') as fobj:
 with open(path, 'w') as fobj:
     with redirect_stdout(fobj):
         help(redirect_stdout)
+
+
+# ExitStack
+with ExitStack as stack:
+    file_objects = [stack.enter_context(open(filename))
+                    for filename in filenames]
 
 
 if __name__ == '__main__':
