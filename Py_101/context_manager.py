@@ -1,4 +1,6 @@
+import sys
 from contextlib import contextmanager, closing, suppress
+from connectlib import redirect_stdout
 from urllib.request import urlopen
 
 
@@ -36,6 +38,18 @@ with suppress(FileNotFoundError):
     with open('fauxfile.txt') as fobj:
         for line in fobj:
             print(line)
+
+
+# contextlib.redirect_stdout / redirect_stderr
+path = '/Users/noodle/Desktop/text.txt'
+with open(path, 'w') as fobj:
+    sys.stdout = fobj
+    help(sum)
+
+
+with open(path, 'w') as fobj:
+    with redirect_stdout(fobj):
+        help(redirect_stdout)
 
 
 if __name__ == '__main__':
