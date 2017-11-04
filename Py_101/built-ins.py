@@ -5,3 +5,9 @@ widget_two = ''
 widget_three = 'button'
 widgets_exist = any([widget_one, widget_two, widget_three])
 print(widgets_exist)
+
+
+# enumerate
+my_string = 'abcdefg'
+for pos, letter in enumerate(my_string):
+    print(pos, letter)
