@@ -11,3 +11,9 @@ print(widgets_exist)
 my_string = 'abcdefg'
 for pos, letter in enumerate(my_string):
     print(pos, letter)
+
+
+# eval
+var = 10
+source = 'var * 2'
+print(eval(source))
