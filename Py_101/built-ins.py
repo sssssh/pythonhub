@@ -27,3 +27,13 @@ def less_than_ten(x):
 my_list = [1, 2, 3, 10, 11, 12]
 for item in filter(less_than_ten, my_list):
     print(item)
+
+
+# map
+def doubler(x):
+    return x * 2
+
+
+my_list = [1, 2, 3, 4, 5]
+for item in map(doubler, my_list):
+    print(item)
