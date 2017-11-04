@@ -8,3 +8,7 @@ for item in cycle('XYZ'):
         break
     print(item)
     count += 1
+
+
+polys = ['triangle', 'square', 'pentagon', 'rectangle']
+iterator = cycle(polys)
