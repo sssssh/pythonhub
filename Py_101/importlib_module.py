@@ -50,3 +50,7 @@ if __name__ == '__main__':
 
     import logging
     import_source(logging)
+
+    # pip install import_from_github_com
+    from github_com.zzzeek import sqlalchemy
+    print(locals())
