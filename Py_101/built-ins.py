@@ -37,3 +37,10 @@ def doubler(x):
 my_list = [1, 2, 3, 4, 5]
 for item in map(doubler, my_list):
     print(item)
+
+
+# zip
+keys = ['x', 'y', 'z']
+values = [5, 6, 7]
+print(list(zip(keys, values)))
+print(dict(zip(keys, values)))
