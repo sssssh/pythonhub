@@ -33,3 +33,9 @@ with open('/path_to_private_key/my_private_rsa_key.bin', 'wb') as f:
 
 with open('/path_to_public_key/my_rsa_public.pem', 'wb') as f:
     f.write(key.publickey().exportKey())
+
+
+# encrypting a file
+
+
+# the cryptography package
