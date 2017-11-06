@@ -69,3 +69,14 @@ class CarModel:
               "the serial number {0} on the {1} "
               "at this time".format(
                     serial_number, self.model_name))
+
+
+# car class
+class Car:
+    def __init__(self, model, color, serial):
+        self.model = model
+        self.color = color
+        self.serial = serial
+
+    def check_serial(self):
+        return self.model.check_serial(self.serial)
