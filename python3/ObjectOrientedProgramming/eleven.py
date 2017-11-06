@@ -155,3 +155,19 @@ save_keystroke = KeyboardShortcut("s", "ctrl")
 save_keystroke.command = save
 exit_menu = MenuItem("File", "Exit")
 exit_menu.command = exit
+
+
+# window command function
+class Window:
+    def exit(self):
+        sys.exit(0)
+
+
+class MenuItem:
+    def click(self):
+        self.command()
+
+
+window = Window()
+menu_item = MenuItem()
+menu_item.command = window.exit
