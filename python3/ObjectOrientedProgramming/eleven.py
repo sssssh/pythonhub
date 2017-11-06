@@ -63,3 +63,9 @@ class CarModel:
             self.alloy_wheels = alloy_wheels
             self.usb_charger = usb_charger
             self.initialized = True
+
+    def check_serial(self, serial_number):
+        print("Sorry, we are unable to check "
+              "the serial number {0} on the {1} "
+              "at this time".format(
+                    serial_number, self.model_name))
