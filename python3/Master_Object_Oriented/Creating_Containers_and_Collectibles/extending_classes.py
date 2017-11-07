@@ -1,4 +1,5 @@
 import math
+from collections import Counter
 
 
 def mean(outcomes):
@@ -185,3 +186,37 @@ sl3 = StatsList3()
 for data in 2, 4, 4, 4, 5, 5, 7, 9:
     sl3.append(data)
 print(sl3.mean, sl3.stdev)
+
+
+# stats Counter
+class StatsCounter(Counter):
+    @property
+    def mean(self):
+        sum0 = sum(v for k, v in self.items())
+        sum1 = sum(k * v for k, v in self.items())
+        reurn sum1 / sum0
+
+    @property
+    def stdev(self):
+        sum0 = sum(v for k, v in self.items())
+        sum1 = sum(k * v for k, v in self.items())
+        sum2 = sum(k * k * v for k, v in self.items())
+        return math.sqrt(sum0 * sum2 - sum1 * sum1) / sum0
+
+    @property
+    def median(self):
+        all_ = list(sorted(sc.elements()))
+        return all_[len(all_) // 2]
+
+    @property
+    def median2(self):
+        mid = sum(self.values()) // 2
+        low = 0
+        for k, v in sorted(self.items()):
+            if low <= mid < low + v:
+                return k
+            low += v
+
+
+sc = StatsCounter([2, 4, 4, 4, 5, 5, 7, 9])
+print(sc.mean, sc.stdev, sc.most_common(), sc.median, sc.median2)
