@@ -16,7 +16,7 @@ class TestCard(unittest.TestCase):
         self.assertEqual(3, self.three_clubs.soft)
 
 
-class TestAceCard(unittest.TestCard):
+class TestAceCard(unittest.TestCase):
     def setUp(self):
         self.ace_spades = AceCard(1, '♠')
 
