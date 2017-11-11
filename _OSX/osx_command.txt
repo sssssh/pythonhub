@@ -1,0 +1,6 @@
+Command ⌘
+Option ⌥
+Caps Lock ⇪
+Shift ⇧
+Control ⌃
+Fn
