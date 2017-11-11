@@ -4,3 +4,15 @@ Caps Lock ⇪
 Shift ⇧
 Control ⌃
 Fn
+
+- Universal Shortcuts
+⌘ W  --  close windows
+⌘ Q  --  quit apps
+⌘ N  --  create a new window
+⌘ M  --  minimize
+⌘ H  --  hide apps
+⌘ I  --  get info
+⌘ A  --  select everything
+⌘ S  --  Save
+⌘ Z  --  Undo
+⌘ ,  --  open an app's preferences
