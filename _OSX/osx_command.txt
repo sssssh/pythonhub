@@ -24,3 +24,19 @@ Fn
 ⌥ Volume  --  open sound settings
 ⌥ ⇧ Volume Up/Down  --  incremental volume and brightness adjustment
 ⌘ tab  --  fast app switching
+
+
+- Working with Text
+⌘ X  --  Cut
+⌘ V  --  Paste
+⌘ C  --  copy
+⌘ T  --  transpose characters
+
+⌥ ->  --  jump words
+⌥ <-  --  jump words
+⌘ delete  --  delete a line of text
+⌥ ⇧ 8  --  type the degree symbol
+⌥ ⇧ -  --  em-dash:the real dash
+⌃ K  --  secondary clipboard
+⌃ Y  --  secondary clipboard
+fn fn  --  dictation
