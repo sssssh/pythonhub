@@ -40,3 +40,12 @@ Fn
 ⌃ K  --  secondary clipboard
 ⌃ Y  --  secondary clipboard
 fn fn  --  dictation
+
+
+- Safari
+⌘ R  --  reload
+⌘ T  --  new tab
+
+^ ⇧ ->  --  switch tabs
+⌘ D  --  add a bookmark
+⌘ L  --  jump to the address bar
