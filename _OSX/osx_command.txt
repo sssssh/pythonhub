@@ -16,3 +16,11 @@ Fn
 ⌘ S  --  Save
 ⌘ Z  --  Undo
 ⌘ ,  --  open an app's preferences
+
+
+- System
+⌘ Spacebar  --  spotlight
+⌃ ⇧ Power or Eject  --  lock your mac
+⌥ Volume  --  open sound settings
+⌥ ⇧ Volume Up/Down  --  incremental volume and brightness adjustment
+⌘ tab  --  fast app switching
