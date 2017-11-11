@@ -49,3 +49,17 @@ fn fn  --  dictation
 ^ ⇧ ->  --  switch tabs
 ⌘ D  --  add a bookmark
 ⌘ L  --  jump to the address bar
+
+
+- Finder
+⌘ 1
+⌘ 2
+⌘ 3
+⌘ 4  --  change the view
+
+⌘ ⇧ N  --  create a new folder
+⌘ J  --  open view options
+⌘ ⇧ R  --  fast airdrop access
+⌘ K  --  connect to a server
+⌘ D  --  move to desktop
+⌘ 向上箭头   --  faster folder navigation
