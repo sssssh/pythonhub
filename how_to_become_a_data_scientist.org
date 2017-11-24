@@ -1,0 +1,46 @@
+*  Python
+ Pick an open-source language well-designed for Data Science.
+*  Python Data Stack
+*** IPython
+*** Numpy
+*** Scipy
+*** Pandas
+*** matplotlib
+*** scikit learn
+*  Learn SQL
+ MySQL
+ http://sqlzoo.net/
+*  Machine Learning
+*** Andrew Ng's Coursera Course
+ https://www.coursera.org/learn/machine-learning
+*** Elements of Statistical Learning
+ http://statweb.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print|0.pdf
+*** Scikit-Learn documentation
+ http://scikit-learn.org/stable/documentation.html
+*  BAYESIAN STATISTICS
+*** Bayesian Methods for Hackers
+ https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers
+*** Statistics for Hackers
+ https://speakerdeck.com/jakevdp/statistics-for-hackers
+*  PROBABILITY DISTRIBUTIONS
+ http:/blog.cloudera.com/blog/2015/12/common-probabilit-distributions-the-data-scientists-crib-sheet/
+*  Data Science
+ Do a project you care about Make it good and share it.
+ https://www.quora.com/How-can-I-become-a-data-scientist
+*  Data Science Job Skills
+ https://jessesw.com/XG-Boost/
+*  About Kaggle
+
+*  Which jobs to apply to
+ http://blog.udacity.com/2014/11/data-science-job-skills.html
+*  INTERVIEW TIPS
+*** Take-home machine learning task
+*** 'Whiteboard' coding (focus on Data Structures/Algorithms)
+**** https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850
+**** https://www.interviewcake.com/
+**** https://www.hackerrank.com/
+**** https://projecteuler.net/
+*** 'Whiteboard' SQL
+**** SQL Zoo
+*** Bayes' Theorem probability questions
+*** Machine learning evaluation metrics
