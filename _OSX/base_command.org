@@ -111,3 +111,24 @@
 
 *  在控制台编辑文本文件
 **  emacs
+
+*  网络入门
+**  ping
+ 测试网络的连通性
+
+ ping 127.0.0.1
+ ping 192.168.122.50
+ ping www.google.com
+
+**  traceroute
+ 通过跟踪到目的地的路由路径，自动完成上述过程。
+
+ traceroute -n 192.168.20.5
+
+**  ip
+ 显示活动网卡的当前状态，也可以用于分配网络地址及其他功能。(mac 上用不了)
+ 
+**  dhclient
+**  ss
+**  systemctl
+**  nmcli 
