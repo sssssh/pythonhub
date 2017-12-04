@@ -64,3 +64,11 @@
  alias mv='mv -i'
  alias rm='rm -i'
  alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+
+*  通配符
+**  *
+ 代表任意数量的字符
+**  ?
+ 代表一个任意的字符
+**  []
+ 范围选项
