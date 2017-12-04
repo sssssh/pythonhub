@@ -39,3 +39,28 @@
  可颠倒排列顺序
 **  ls -R
  可递归列出所有子目录的内容
+
+*  文件创建命令
+**  touch
+**  cp
+ cp -a （支持递归修改，并保留所有文件属性，例如权限，所有权和时间戳）
+**  mv
+**  ln
+ 硬连接是目录项，指向同一索引结点。
+ ln /etc/samba/smb.conf smb.conf
+ 软连接起着重定向的作用。
+ ln -s /etc/samba/smb.conf smb.conf
+**  rm
+**  mkdir
+**  rmdir
+**  alias
+ alias cp='cp -i'
+ alias egrep='egrep --color=auto'
+ alias fgrep='fgrep --color=auto'
+ alias grep='grep --color=auto'
+ alias l.='ls -d .* --color=auto'
+ alias ll='ls -l --color=auto'
+ alias ls='ls --color=auto'
+ alias mv='mv -i'
+ alias rm='rm -i'
+ alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
