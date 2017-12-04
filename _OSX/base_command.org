@@ -87,3 +87,24 @@
 **  more
 **  head
 **  tail
+
+*  处理文本流的命令
+**  sort
+ sort /etc/passwd
+ 对文件的内容进行排序
+**  grep
+ 使用搜索词搜索文件，搭配正则表达式使用
+**  diff
+ 找出两个文件的差别
+ diff /root/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-eth0
+**  wc
+ 单词统计（word count)
+ wc -w filename
+**  sed
+ 用于搜索并修改文件中指定的单词甚至文本流
+ 
+ sed 's/Windows/Linux/' opsys > newopsys
+**  awk
+ 用关键字确定所在行，可以读取这一行中的制定列开始的内容
+ 
+ awk -F : '/mike/ {print $4} ' /etc/passwd
