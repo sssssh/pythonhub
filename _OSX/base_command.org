@@ -1,0 +1,20 @@
+*  文本流与命令重定向
+ stdin, stdout, stderr
+ 数据输入流、数据输出流和向另一个方向发送的错误。
+**  cat filename
+ 文件的内容作为标准输出发送到屏幕。
+**  database < datafile
+ 把数据文件的内容发送到这个数据库程序。
+**  dmesg | less
+ 把dmesg命令的输出重定向为less的标准输入。
+ 后者对前者的输出内容进行翻页浏览。
+**  ls > filelist
+ 把ls命令的标准输出发送到命名为filelist的文件中。
+**  ls >> filelist
+ 在当前文件的末尾添加标准的输出流。
+**  program 2> err-list
+ 将某个程序的错误消息保存到一个文件中
+**  program 2> /dev/null
+ 丢弃所有错误。将错误流重定向到特殊的设备文件/dev/null
+**  program &> output-and-error
+ 将标准输出和错误发送到一个文件或设备
