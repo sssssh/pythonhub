@@ -79,3 +79,11 @@
  在目录以及子目录中搜索需要的文件
 **  locate
  自建数据库，保全了全部安装文件和目录。
+
+*  文本文件的管理
+**  cat
+ cat file1 file2
+**  less
+**  more
+**  head
+**  tail
