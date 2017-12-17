@@ -1,0 +1,288 @@
+#+STARTIP: overview
+* Interface tweaks
+#+BEGIN_SRC emacs-lisp
+(setq inhibit-startup-message t)
+(tool-bar-mode -1)
+(fset 'yes-or-no-p 'y-or-n-p)
+(global-set-key (kbd "<f5>") 'revert-buffer)
+#+END_SRC
+
+* Try
+#+BEGIN_SRC emacs-lisp
+(use-package try
+        :ensure t)
+#+END_SRC
+
+* Which key
+  Brings up some help
+#+BEGIN_SRC emacs-lisp
+(use-package which-key
+        :ensure t
+        :config
+        (which-key-mode))
+#+END_SRC
+  
+* Buffers
+#+BEGIN_SRC emacs-lisp
+(setq indo-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+
+(defalias 'list-buffers 'ibuffer)
+
+(use-package tabbar
+        :ensure t
+        :config (tabbar-mode 1)
+        )
+#+END_SRC
+* Windows
+#+BEGIN_SRC emacs-lisp
+(use-package ace-window
+        :ensure t
+        :init
+        (progn
+          (global-set-key [remap other-window] 'ace-window)
+          (custom-set-faces
+           '(aw-leading-char-face
+             ((t (:inherit ace-jump-face-foreground :height 3.0)))))
+        ))
+#+END_SRC
+
+* Counsel/Ivy/Swiper
+#+BEGIN_SRC emacs-lisp
+(use-package counsel
+        :ensure t
+        )
+
+(use-package ivy
+        :ensure t
+        :diminish (ivy-mode)
+        :bind (("C-x b" . ivy-switch-buffer))
+        :config
+          (ivy-mode 1)
+          (setq ivy-use-virtual-buffers t)
+          (setq ivy-count-format "%d/%d ")
+          (setq ivy-display-style 'fancy))
+
+(use-package swiper
+        :ensure t
+        :config
+        (progn
+          (ivy-mode 1)
+          (setq ivy-use-virtual-buffers t)
+          (setq enable-recursive-minibuffers t)
+          (global-set-key "\C-s" 'swiper)
+          (global-set-key (kbd "C-c C-r") 'ivy-resume)
+          (global-set-key (kbd "<f6>") 'ivy-resume)
+          (global-set-key (kbd "M-x") 'counsel-M-x)
+          (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+          (global-set-key (kbd "<f1> f") 'counsel-describe-function)
+          (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+          (global-set-key (kbd "<f1> l") 'counsel-find-library)
+          (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+          (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+          (global-set-key (kbd "C-c g") 'counsel-git)
+          (global-set-key (kbd "C-c j") 'counsel-git-grep)
+          (global-set-key (kbd "C-c k") 'counsel-ag)
+          (global-set-key (kbd "C-x l") 'counsel-locate)
+          (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+          (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+        ))
+#+END_SRC
+* Navigation / avy
+#+BEGIN_SRC emacs-lisp 
+(use-package avy
+        :ensure t
+        :bind ("M-s" . avy-goto-char))
+#+END_SRC
+* Autocomplete
+#+BEGIN_SRC emacs-lisp
+(use-package auto-complete
+        :ensure t
+        :init
+        (progn
+          (ac-config-default)
+          (global-auto-complete-mode t)
+          ))
+#+END_SRC
+* Themes
+#+BEGIN_SRC emacs-lisp
+(use-package color-theme
+        :ensure t)
+;;(use-package zenburn-theme
+;;        :ensure t
+;;        :config (load-theme 'zenburn t))
+;;(load-theme 'leuven t)
+
+(use-package base16-theme
+        :ensure t)
+
+(use-package moe-theme
+        :ensure t)
+
+;;(use-package eziam-theme
+;;        :ensure t)
+
+(use-package alect-themes
+        :ensure t)
+
+(moe-dark)
+(use-package powerline
+        :ensure t)
+;;        :config
+;;          (powerline-mode-theme))
+#+END_SRC
+
+* Flycheck
+#+BEGIN_SRC emacs-lisp
+(use-package flycheck
+        :ensure t
+        :init
+        (global-flycheck-mode t))
+#+END_SRC
+
+* Python
+#+BEGIN_SRC emacs-lisp
+(setq py-python-command "python3")
+(setq python-shell-interpreter "python3")
+
+(use-package jedi
+        :ensure t
+        :init
+        (add-hook 'python-mode-hook 'jedi:setup)
+        (add-hook 'python-mode-hook 'jedi:ac-setup))
+
+(use-package elpy
+        :ensure t
+        :config 
+          (elpy-enable))
+
+(use-package virtualenvwrapper
+        :ensure t
+        :config
+          (venv-initialize-interactive-shells)
+          (venv-initialize-eshell))
+
+#+END_SRC
+* Yasnippet
+#+BEGIN_SRC emacs-lisp
+(use-package yasnippet
+        :ensure t
+        :init
+        (yas-global-mode 1))
+#+END_SRC
+* Undo Tree
+#+BEGIN_SRC emacs-lisp
+(use-package undo-tree
+        :ensure t
+        :init
+          (global-undo-tree-mode))
+#+END_SRC
+
+* Misc small packages
+#+BEGIN_SRC emacs-lisp
+(global-hl-line-mode t)
+
+(use-package beacon
+        :ensure t
+        :config
+          (beacon-mode 1)
+          (setq beacon-color "#666600"))
+
+(use-package hungry-delete
+        :ensure t
+        :config
+          (global-hungry-delete-mode))
+
+(use-package expand-region
+        :ensure t
+        :config 
+          (global-set-key (kbd "C-=") 'er/expand-region))
+
+(setq save-interprogram-paste-before-kill t)
+
+(global-auto-revert-mode 1)
+(setq auto-revert-verbose nil)
+(global-set-key (kbd "<f5>") 'revert-buffer)
+(global-set-key (kbd "<f6>") 'revert-buffer)
+#+END_SRC
+
+* Iedit and Narrow / widen dwim
+#+BEGIN_SRC emacs-lisp
+(use-package iedit
+        :ensure t)
+
+(defun narrow-or-widen-dwim (p)
+  "Widen if buffer is narrowed, narrow-dwim otherwise.
+Dwim means: region, org-src-block, org-subtree, or
+defun, whichever applies first. Narrowing to
+org-src-block actually calls `org-edit-src-code'.
+
+With prefix P, don't widen, just narrow even if buffer
+is already narrowed."
+  (interactive "P")
+  (declare (interactive-only))
+  (cond ((and (buffer-narrowed-p) (not p)) (widen))
+        ((region-active-p)
+         (narrow-to-region (region-beginning)
+                           (region-end)))
+        ((derived-mode-p 'org-mode)
+         ;; `org-edit-src-code' is not a real narrowing
+         ;; command. Remove this first conditional if
+         ;; you don't want it.
+         (cond ((ignore-errors (org-edit-src-code) t)
+                (delete-other-windows))
+               ((ignore-errors (org-narrow-to-block) t))
+               (t (org-narrow-to-subtree))))
+        ((derived-mode-p 'latex-mode)
+         (LaTeX-narrow-to-environment))
+        (t (narrow-to-defun))))
+
+;;(define-key endless/toggle-map "n"
+;;  #'narrow-or-widen-dwim)
+;; This line actually replaces Emacs' entire narrowing
+;; keymap, that's how much I like this command. Only
+;; copy it if that's what you want.
+(define-key ctl-x-map "n" #'narrow-or-widen-dwim)
+;;(add-hook 'LaTeX-mode-hook
+;;          (lambda ()
+;;            (define-key LaTeX-mode-map "\C-xn"
+;;              nil)))
+#+END_SRC
+
+* Web Mode
+#+BEGIN_SRC emacs-lisp
+(use-package web-mode
+        :ensure t
+        :config
+	  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+	  (add-to-list 'auto-mode-alist '("\\.vue?\\'" . web-mode))
+	  (setq web-mode-engines-alist
+		 '(("django"    . "\\.html\\'")))
+	  (setq web-mode-ac-sources-alist
+	  '(("css" . (ac-source-css-property))
+	  ("vue" . (ac-source-words-in-buffer ac-source-abbrev))
+          ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+
+(setq web-mode-enable-auto-closing t))
+(setq web-mode-enable-auto-quoting t)
+#+END_SRC
+
+* DIRED
+#+BEGIN_SRC emacs-lisp
+(use-package dired+
+        :ensure t
+        :config (require 'dired+))
+#+END_SRC
+* Stuff to refile as I do more Screencasts
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name "Asher Guan"
+			user-mail-address "python.sth@gmail.com")
+
+(use-package tex
+        :ensure auctex)
+
+(defun tex-view ()
+    (interactive)
+    (tex-send-command "evince" (tex-append tex-print-file ".pdf")))
+#+END_SRC
