@@ -136,8 +136,8 @@
 
 * Elpy
 #+BEGIN_SRC emacs-lisp
-(package-initialize)
-(elpy-enable)
+;;(package-initialize)
+;;(elpy-enable)
 #+END_SRC
 * Undo Tree
 #+BEGIN_SRC emacs-lisp
