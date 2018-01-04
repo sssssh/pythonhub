@@ -2,6 +2,16 @@
 #+OPTIONS: toc:4 h:4
 #+STARTUP: Show Everything
 
+* Introduction
+
+** Emacs Executable
+#+BEGIN_SRC shell
+
+#+END_SRC
+** Loading this File
+#+BEGIN_SRC elisp :tangle no
+
+#+END_SRC
 * Personal information
 
 #+BEGIN_SRC emacs-lisp :tangle yes
