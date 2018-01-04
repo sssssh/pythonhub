@@ -19,7 +19,13 @@
       user-mail-address "python.sth@gmail.com")
 #+END_SRC
 
-* General configuration
+* General Settings
+** My Directory Location
+#+BEGIN_SRC elisp                                                            
+(defconst ha/emacs-directory (concat (getenv "HOME") "/.emacs.d/"))
+
+(defun ha/emacs-subdirectory (d) (expand-file-name d ha/emacs-directory))
+#+END_SRC
 * Libraries
 
 #+BEGIN_SRC emacs-lisp :tangle yes
