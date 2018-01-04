@@ -1,0 +1,23 @@
+#+TITLE: Emacs configuration File
+#+OPTIONS: toc:4 h:4
+#+STARTUP: Show Everything
+
+* Personal information
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(setq user-full-name "Asher Guan"
+      user-mail-address "python.sth@gmail.com")
+#+END_SRC
+
+* General configuration
+* Libraries
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package dash)
+#+END_SRC
+
+* Backups
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+#+END_SRC
