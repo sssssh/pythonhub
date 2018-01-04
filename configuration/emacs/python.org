@@ -1,0 +1,210 @@
+#+TITLE: Python Programming In Emacs
+#+OPTIONS: toc:4 h:4
+#+STARTUP: Show Everything
+
+;; C-c C-p open py  interpreter
+;; C-c C-c execute *.py
+;; M-x shell
+
+* Virtual Environments
+
+Resources: https://github.com/porterjamesj/virtualenvwrapper.el
+#+BEGIN_SRC emacs-lisp :tangle yes
+;; M-x venv-workon
+;; M-x venv-deactivate
+;; M-x venv-set-location
+(setq py-python-command "python3")
+(setq python-shell-interpreter "python3")
+(require 'virtualenvwrapper)
+(venv-initialize-interactive-shells)
+(venv-initialize-eshell)
+(setq venv-location "~/.virtualenvs")
+#+END_SRC
+
+* Indentation Python
+
+Resources: https://www.emacswiki.org/emacs/IndentingPython
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+#+END_SRC
+
+* Comment/Uncomment Region
+
+Resources: ?
+#+BEGIN_SRC emacs-lisp :tangle yes
+;; M-;
+;; M-x comm-k
+#+END_SRC
+
+* Completion
+
+Resources: https://melpa.org/#/company-jedi
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package jedi
+    :ensure t
+    :init
+    (add-hook 'python-mode-hook 'jedi:setup)
+    (add-hook 'python-mode-hook 'jedi:ac-setup))
+#+END_SRC
+
+* Code navigation
+
+Resource: https://github.com/m2ym/direx-el
+          http://cestlaz.github.io/posts/using-emacs-38-dired/#.WkcBSlT1WqQ
+#+BEGIN_SRC emacs-lisp :tangle yes
+;; M-x package-install RET dired+ RET
+;; M-x package-install RET jedi-direx RET
+(use-package dired+
+  :ensure t
+  :config (require 'dired+)
+  )
+(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
+#+END_SRC
+
+* Code generation helpers
+
+Resource: http://cestlaz.github.io/posts/using-emacs-13-yasnippet/
+          https://github.com/AndreaCrotti/yasnippet-snippets/tree/9ce0b05f4b4d693831e67dd65d660716a8192e8d/python-mode
+          
+          https://github.com/naiquevin/sphinx-doc.el/tree/f39da2e6cae55d5d7c7ce887e69755b7529bcd67
+#+BEGIN_SRC emacs-lisp :tangle yes
+;; yasnippet: a package that lets you expand text aliases.
+;; /Users/noodle/Dropbox/yasnippet-snippets
+(use-package yasnippet
+  :ensure t
+  :init
+    (yas-global-mode 1))
+
+;; sphinx-doc: supports inserting and updating docstring skeletons as used by Sphinx.
+;; C-c M-d 
+;;(add-hook 'python-mode-hook (lambda ()
+;;                              (require 'sphinx-doc)
+;;                              (sphinx-doc-mode t)))
+#+END_SRC
+
+* Lint,sytle and syntax checkers
+
+Resource: http://cestlaz.github.io/posts/using-emacs-12-python/#.WkcOElT1WqQ
+#+BEGIN_SRC emacs-lisp :tangle yes
+;; Flycheck integrates flake8 and pylint
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode t))
+#+END_SRC
+
+* Refactoring
+
+Resource: https://melpa.org/#/py-yapf
+          https://github.com/google/yapf
+          https://github.com/anachronic/importmagic.el
+          https://melpa.org/#/py-autopep8
+#+BEGIN_SRC emacs-lisp :tangle yes
+;; Yapf attempts to format Python code to the best formatting that conforms to a style guide...
+;; pip3 install yapf
+;; M-x package-install RET py-yapf RET
+;; M-x py-yapf-buffer
+(use-package py-yapf
+    :ensure t
+    :config
+    (add-hook 'python-mode-hook 'py-yapf-enable-on-save))
+
+;; Autopep8 formats Python code to conform to the PEP 8 style guide using the pep8 tool.
+;; M-x package-install RET py-autopep8 RET
+;; M-x p-a-b
+(use-package py-yapf
+    :ensure t
+    :config
+    (add-hook 'python-mode-hook 'py-autopep8-enable-on-save))
+(setq py-autopep8-options '("--max-line-length=100"))
+
+;; Tidying imports
+;; py-isort using isort.
+;; M-x py-isort-buffer RET: Uses the isort tool to reformat the current buffer.
+;; M-x py-isort-region RET: Uses the isort tool to reformat the current region.
+(use-package py-isort
+    :ensure t
+    :config)
+(setq py-isort-options '("--lines=100"))
+
+;; importmagic automatically insert missing imports
+;; M-x imp-m (enable the importmagic-mode)
+;; C-c C-l insert missing imports
+;; you must konw which virtualenv you are activate.
+;; /Users/noodle/.emacs.d/elpa/importmagic-20170702.1844
+#+END_SRC
+
+* Running test
+
+Resource: https://melpa.org/#/pytest
+#+BEGIN_SRC emacs-lisp :tangle yes
+;; I really don't konw how to run pytest in emacs.
+;; M-x package-install RET pytest RET
+(require 'pytest)
+(add-to-list 'pytest-project-names "~/Dropbox/runner")
+#+END_SRC
+
+* Reporting test coverage
+
+Resource: https://melpa.org/#/pycoverage
+          https://github.com/mattharrison/pycoverage.el/tree/master/cov2emacs
+#+BEGIN_SRC emacs-lisp :tangle yes
+;; M-x package-install RET pycoverage RET
+;; git clone https://github.com/mattharrison/pycoverage.el.git
+;; workon _Computer_Vision
+;; python setup.py install
+
+(require 'linum)
+(require 'pycoverage)
+
+(defun my-coverage ()
+  (interactive)
+  (when (derived-mode-p 'python-mode)
+    (progn
+      (linum-mode)
+      (pycoverage-mode))))
+#+END_SRC
+
+* Debugging
+
+Resource:
+#+BEGIN_SRC emacs-lisp :tangle yes
+;; https://melpa.org/#/realgud
+#+END_SRC
+
+* Interactive environments - Shells, REPLs and notebooks
+
+Resource:
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+#+END_SRC
+
+* Cell-mode
+
+Resource:
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+#+END_SRC
+
+* Viewing generated documentation
+
+Resource:
+#+BEGIN_SRC emacs-lisp :tangle yes
+(require 'pydoc)
+#+END_SRC
+
+* Viewing the official Python documentation
+
+Resource: https://bitbucket.org/jonwaltman/pydoc-info/
+          https://github.com/tsgates/pylookup
+#+BEGIN_SRC emacs-lisp :tangle yes
+;; Using info
+;; Using a web browser
+#+END_SRC
+
+* Editing pip requirements files
+
+Resource:
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+#+END_SRC
