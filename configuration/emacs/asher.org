@@ -21,10 +21,19 @@
 
 * General Settings
 ** My Directory Location
-#+BEGIN_SRC elisp                                                            
+#+BEGIN_SRC elisp
 (defconst ha/emacs-directory (concat (getenv "HOME") "/.emacs.d/"))
 
 (defun ha/emacs-subdirectory (d) (expand-file-name d ha/emacs-directory))
+#+END_SRC
+** Directory Structure
+#+BEGIN_SRC elisp
+(let* ((subdirs '("elisp" "backups"))
+       (fulldirs (mapcar (lambda (d) (ha/emacs-subdirectory d)) subdirs)))
+  (dolist (dir fulldirs)
+    (when (not (file-exists-p dir))
+      (message "Make directory: %s" dir)
+      (make-directory dir))))
 #+END_SRC
 * Libraries
 
